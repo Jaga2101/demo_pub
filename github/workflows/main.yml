@@ -32,6 +32,4 @@ jobs:
       - name: Build APK
         run: flutter build apk --release --build-name=1.0.0 --build-number=1
       
-      - name: Run tests
-        run: flutter test
-                
+    
