@@ -1,36 +1,71 @@
+# name: Flutter - Android Build Dev
+
+# on: 
+#   push: 
+#     branches:
+#        - master
+#   pull_request:
+#     branches:
+#        - master
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
+
+#       - name: Setup JDK
+#         uses: actions/setup-java@v4
+#         with:
+#           java-version: '21.0.2'
+#           distribution: 'zulu'
+
+#       - name: Set up Flutter
+#         uses: subosito/flutter-action@v2
+#         with:
+#           channel: 'master'
+#           flutter-version: 3.19.0-13.0.pre
+          
+#       - name: Install dependencies
+#         run: flutter pub get
+
+#       - name: Build APK
+#         run: flutter build apk --release --build-name=1.0.0 --build-number=1
+      
 name: Flutter - Android Build Dev
 
 on: 
   push: 
     branches:
-       - master
+      - master
   pull_request:
     branches:
-       - master
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup JDK
+      - name: Set up Java
         uses: actions/setup-java@v4
         with:
-          java-version: '21.0.2'
           distribution: 'zulu'
+          java-version: '21.0.2'
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
+          flutter-version: '3.19.0-13.0.pre'
           channel: 'master'
-          flutter-version: 3.19.0-13.0.pre
-          
+
       - name: Install dependencies
         run: flutter pub get
 
       - name: Build APK
         run: flutter build apk --release --build-name=1.0.0 --build-number=1
-      
     
